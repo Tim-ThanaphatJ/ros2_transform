@@ -26,7 +26,7 @@ class Transform(Node):
         self.tf_buffer = Buffer()
         self.tf_listener = TransformListener(self.tf_buffer, self)
         
-        # Public
+        # Publisher
         if "_" in from_fram_ref : 
             self.topic_name = from_fram_ref.split("_")[0] + from_fram_ref.split("_")[-1]
         else:
@@ -72,8 +72,6 @@ def main():
     rclpy.spin(transform)
 
     # Destroy the node explicitly
-    # (optional - otherwise it will be done automatically
-    # when the garbage collector destroys the node object)
     transform.destroy_node()
     rclpy.shutdown()
 
